@@ -12,7 +12,6 @@ import pandas as pd
 # OpenAIの設定
 load_openai_api_key()
 llm = ChatOpenAI(model="gpt-4o-mini", temperature=0.5, max_tokens=600)
-count = 0
 
 def generate_code(requests, column_info):
     prompt = ChatPromptTemplate.from_messages(
@@ -30,7 +29,7 @@ def generate_code(requests, column_info):
     return clean_answer
 
 def execute_generated_code(df, generated_code):
-    global count
+    count = 0
     if count <= 2:
         try:
             exec(generated_code)

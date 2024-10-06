@@ -7,6 +7,7 @@ from datetime import datetime
 import streamlit as st
 import os
 from config import load_openai_api_key
+import pandas as pd
 
 # OpenAIの設定
 load_openai_api_key()
@@ -38,7 +39,7 @@ def execute_generated_code(df, generated_code):
             print(f"コード修正：{count}回目")
             prompt = ChatPromptTemplate.from_messages(
                     [
-                        ("system", "あなたはプログラマーのアシスタントです。エラー内容に従って修正したコードのみを返答してください。データの確認作業は必要なく、可視化するためのコードのみにしてください。Cannot subtract tz-naive and tz-aware datetime-like objectsが起こらないように考慮してください。"),
+                        ("system", "あなたはプログラマーのアシスタントです。エラー内容に従って修正したコードのみを返答してください。データの確認作業は必要なく、可視化するためのコードのみにしてください。"),
                         ("user", "修正前のコード:「{generated_code}, エラー内容：{e}")
                     ]
             )
@@ -50,6 +51,6 @@ def execute_generated_code(df, generated_code):
             st.write(f"エラーが発生しました。エラー内容はこちらです。\n{e}")
             st.write("コードを修正します。")
             st.write(f"修正後コード：\n{answer}")
-            execute_generated_code(clean_answer)
+            execute_generated_code(df, clean_answer)
     else: 
         st.write("エラーが修正できませんでした、プロンプトを記載し直してください。")

@@ -1,6 +1,7 @@
 import os
 from dotenv import load_dotenv
 import openai
+import streamlit as st
 
 def load_config():
     load_dotenv()

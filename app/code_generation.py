@@ -28,8 +28,7 @@ def generate_code(requests, column_info):
     st.write(f"実行コード：\n{answer}")
     return clean_answer
 
-def execute_generated_code(df, generated_code):
-    count = 0
+def execute_generated_code(df, generated_code, count=0):
     if count <= 2:
         try:
             exec(generated_code)
@@ -50,6 +49,6 @@ def execute_generated_code(df, generated_code):
             st.write(f"エラーが発生しました。エラー内容はこちらです。\n{e}")
             st.write("コードを修正します。")
             st.write(f"修正後コード：\n{answer}")
-            execute_generated_code(df, clean_answer)
+            execute_generated_code(df, clean_answer, count)
     else: 
         st.write("エラーが修正できませんでした、プロンプトを記載し直してください。")

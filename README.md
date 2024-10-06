@@ -1,6 +1,16 @@
 # Japanese
 ## データ分析EDAアプリケーション
 - こちらのアプリを利用することでノートブックでコードを記載することなく簡単にEDAができるようになります
+
+## ファイル構成
+- app配下
+    - code_generation.py：コードを生成する関数を格納
+    - config.py：APIキーを設定する関数を格納
+    - data_processing.py：データフレームに関する関数を格納
+    - main.py：メインの処理を記載
+- .env：APIの情報を記載
+
+
 ### 使い方
 1. こちらのプロジェクトをクローン：git clone https://github.com/tailand2000/Data-EDA-App.git
 2. .envファイルのLANGCHAIN_API_KEYにご自身のlangchainのAPIキー、OPENAI_API_KEYにご自身のOpenAIのAPIキーを入力。(1実行当たり、$0.0005程、料金がかかります。)

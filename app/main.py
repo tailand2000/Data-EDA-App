@@ -19,6 +19,7 @@ def main():
 
         if st.button("可視化", key="submit"):
             if requests:
+                st.write(f"可視化内容：\n{requests}")
                 generated_code = generate_code(requests, column_info)
                 execute_generated_code(df, generated_code)
 

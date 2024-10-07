@@ -1,3 +1,6 @@
+import streamlit as st
+import datetime
+
 def clear_session_if_expired():
     if "last_interaction" in st.session_state:
         # 現在の時間と最後の操作時間の差を計算

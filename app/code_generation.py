@@ -60,7 +60,7 @@ def execute_generated_code(df, generated_code, count=0):
             clean_answer = answer.replace("```python", "").replace("```", "")
             st.write(f"エラーが発生しました。エラー内容はこちらです。\n{e}")
             st.write("コードを修正します。")
-            st.write(f"修正後コード：\n{clean_answer}")
+            st.write(f"修正後コード：\n{answer}")
             execute_generated_code(df, clean_answer, count)
     else: 
         st.write("エラーが修正できませんでした、プロンプトを記載し直してください。")

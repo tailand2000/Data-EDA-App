@@ -24,9 +24,7 @@ def main():
         st.session_state.csv_file = csv_file
         df = pd.read_csv(csv_file)
         st.session_state.df = df
-        st.write(df.head(5))
         column_info = describe_columns(df)
-        st.session_state.column_info = column_info
         update_last_interaction()  # 最後の操作時間を更新
 
     # セッションにCSVファイルとデータフレームがある場合

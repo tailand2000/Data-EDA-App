@@ -22,14 +22,12 @@ def generate_code(requests, column_info):
              "可視化の際には、ラベルが重ならないように最適化し、必要に応じて `matplotlib` などのライブラリを使用してください。"
              "コードにはデータフレームの例や不要なコメントを含めないでください。"
              "コードの効率性や読みやすさを重視し、冗長な部分は避けてください。"
-             "基本的にはグラフ上に表示される文字は英語でいいですが、ユーザーの希望に沿う形で日本語も使ってください。その場合、グラフの日本語のラベルが文字化けしないように、日本語フォントのヒラギノ角ゴシック W3.ttcを設定してください。"
-             "フォントのパスは'../asserts/fonts/ヒラギノ角ゴシック W3.ttc'です"),
+             "基本的にはグラフ上に表示されるラベルやタイトルなどの文字は英語で出力してください"),
             ("user", 
              "実行したいこと: 用意されているデータフレーム(df)のカラム情報は次の通りです: {column_info}。"
              "このデータフレームに対して次の操作を行いたい: {requests}。"
              "結果を可視化する際は、streamlitで実行可能なコードにしてください。"
              "また、プロットのラベルが重ならないように注意してください。"
-             "さらに、日本語の文字化けが発生しないように、日本語対応のフォントを設定してください。"
              "必要に応じて、適切なフォントサイズやスタイルを設定してください。")
         ]
     )
@@ -59,13 +57,7 @@ def execute_generated_code(df, generated_code, count=0):
             answer = chain.invoke({"generated_code": generated_code, "e":e})
             # コードブロックのMarkdown記法を削除
             code_with_font_setting = (
-                "import matplotlib.pyplot as plt\n"
-                "import matplotlib.font_manager as fm\n"
-                "# 日本語フォントの設定\n"
-                "font_path = '../asserts/fonts/ヒラギノ角ゴシック W3.ttc'  # フォントのパスを指定\n"
-                "font_prop = fm.FontProperties(fname=font_path)\n"
-                "plt.rcParams['font.family'] = font_prop.get_name()\n\n"
-                + answer.replace("```python", "").replace("```", "")
+                answer.replace("```python", "").replace("```", "")
             )
             st.write(f"エラーが発生しました。エラー内容はこちらです。\n{e}")
             st.write("コードを修正します。")

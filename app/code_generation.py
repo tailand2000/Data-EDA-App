@@ -25,6 +25,7 @@ def generate_code(requests, column_info):
              "コードの効率性や読みやすさを重視し、冗長な部分は避けてください。"),
             ("user", 
              "実行したいこと: 用意されているデータフレーム(df)のカラム情報は次の通りです: {column_info}。"
+             "dfには欠損値がある可能性があるので、生成するコードには欠損値があることを考慮してください。"
              "このデータフレームに対して次の操作を行いたい: {requests}。"
              "結果を可視化する際は、streamlitで実行可能なコードにしてください。"
              "また、プロットのラベルが重ならないように注意してください。"
@@ -61,7 +62,7 @@ def execute_generated_code(df, generated_code, count=0):
             )
             st.write(f"エラーが発生しました。エラー内容はこちらです。\n{e}")
             st.write("コードを修正します。")
-            st.write(f"修正後コード：\n{answer}")
+            st.write(f"修正後コード：\n{code_with_font_setting}")
             execute_generated_code(df, code_with_font_setting, count)
     else: 
         st.write("エラーが修正できませんでした、プロンプトを記載し直してください。")

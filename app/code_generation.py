@@ -25,7 +25,7 @@ def generate_code(requests, column_info):
              "コードの効率性や読みやすさを重視し、冗長な部分は避けてください。"),
             ("user", 
              "実行したいこと: 用意されているデータフレーム(df)のカラム情報は次の通りです: {column_info}。"
-             "dfには欠損値がある可能性があるので、生成するコードには欠損値があることを考慮してください。"
+             "dfには欠損値がある可能性があるので、欠損値がある場合にエラーが起こりうるコードは制せ紙しないでください。"
              "このデータフレームに対して次の操作を行いたい: {requests}。"
              "結果を可視化する際は、streamlitで実行可能なコードにしてください。"
              "また、プロットのラベルが重ならないように注意してください。"
@@ -46,7 +46,7 @@ def execute_generated_code(df, generated_code, count=0):
             exec(generated_code)
         except Exception as e:
             count += 1
-            print(f"コード修正：{count}回目")
+            st.write(f"コード修正：{count}回目")
             prompt = ChatPromptTemplate.from_messages(
                     [
                         ("system", "あなたはプログラマーのアシスタントです。エラー内容に従って修正したコードのみを返答してください。データの確認作業は必要なく、可視化するためのコードのみにしてください。"),

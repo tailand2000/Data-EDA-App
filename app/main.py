@@ -7,8 +7,6 @@ from data_processing import describe_columns
 from code_generation import generate_code, execute_generated_code
 from session import clear_session_if_expired, update_last_interaction
 
-SESSION_TIMEOUT_SECONDS = 300  # セッションの有効時間を5分（300秒）に設定
-
 def main():
     # セッションタイムアウトをチェック
     clear_session_if_expired()

@@ -1,6 +1,8 @@
 import streamlit as st
 from datetime import datetime
 
+SESSION_TIMEOUT_SECONDS = 300  # セッションの有効時間を5分（300秒）に設定
+
 def clear_session_if_expired():
     if "last_interaction" in st.session_state:
         # 現在の時間と最後の操作時間の差を計算

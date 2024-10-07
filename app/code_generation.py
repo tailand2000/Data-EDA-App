@@ -11,24 +11,23 @@ import pandas as pd
 
 # OpenAIの設定
 load_openai_api_key()
-llm = ChatOpenAI(model="gpt-4o-mini", temperature=0.5, max_tokens=600)
+llm = ChatOpenAI(model="gpt-4o-mini", temperature=0.5, max_tokens=1000)
 
 def generate_code(requests, column_info):
     prompt = ChatPromptTemplate.from_messages(
         [
-            "system", 
+            ("system", 
              "あなたは非常に優秀なプログラマーのアシスタントです。ユーザーが指定した要件を正確にPythonコードとして生成してください。"
              "コードはstreamlitで実行可能な形にしてください。"
              "可視化の際には、ラベルが重ならないように最適化し、必要に応じて `matplotlib` などのライブラリを使用してください。"
              "コードにはデータフレームの例や不要なコメントを含めないでください。"
-             "コードの効率性や読みやすさを重視し、冗長な部分は避けてください。",
-             
-            "user", 
+             "コードの効率性や読みやすさを重視し、冗長な部分は避けてください。"),
+            ("user", 
              "実行したいこと: 用意されているデータフレーム(df)のカラム情報は次の通りです: {column_info}。"
              "このデータフレームに対して次の操作を行いたい: {requests}。"
              "結果を可視化する際は、streamlitで実行可能なコードにしてください。"
              "また、プロットのラベルが重ならないように注意してください。"
-             "必要に応じて、適切なフォントサイズやスタイルを設定してください。"
+             "必要に応じて、適切なフォントサイズやスタイルを設定してください。")
         ]
     )
     output_parser = StrOutputParser()

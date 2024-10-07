@@ -57,12 +57,10 @@ def execute_generated_code(df, generated_code, count=0):
             chain = prompt | llm | output_parser
             answer = chain.invoke({"generated_code": generated_code, "e":e})
             # コードブロックのMarkdown記法を削除
-            code_with_font_setting = (
-                answer.replace("```python", "").replace("```", "")
-            )
+            clean_answer = answer.replace("```python", "").replace("```", "")
             st.write(f"エラーが発生しました。エラー内容はこちらです。\n{e}")
             st.write("コードを修正します。")
-            st.write(f"修正後コード：\n{code_with_font_setting}")
-            execute_generated_code(df, code_with_font_setting, count)
+            st.write(f"修正後コード：\n{clean_answer}")
+            execute_generated_code(df, clean_answer, count)
     else: 
         st.write("エラーが修正できませんでした、プロンプトを記載し直してください。")

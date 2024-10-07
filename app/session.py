@@ -1,5 +1,5 @@
 import streamlit as st
-import datetime
+from datetime import datetime
 
 def clear_session_if_expired():
     if "last_interaction" in st.session_state:

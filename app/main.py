@@ -45,27 +45,27 @@ def main():
                 update_last_interaction()  # 最後の操作時間を更新
 
                 # ユーザーのリクエストを入力
-                requests = st.text_area("可視化したいことを記載してください", height=5, placeholder="例：〇〇カラムごとの平均年齢を棒グラフで可視化してください。")
+                requests_2 = st.text_area("可視化したいことを記載してください", height=5, placeholder="例：〇〇カラムごとの平均年齢を棒グラフで可視化してください。")
 
                 # ボタンが押されたとき
                 if st.button("可視化", key="submit"):
-                    if requests:
-                        st.write(f"可視化内容：\n{requests}")
+                    if requests_2:
+                        st.write(f"可視化内容：\n{requests_2}")
                         # 生成されたコードの呼び出しと実行
-                        generated_code = generate_code(requests, column_info)
-                        execute_generated_code(st.session_state.df, generated_code)
+                        generated_code_2 = generate_code(requests_2, column_info)
+                        execute_generated_code(st.session_state.df, generated_code_2)
                         update_last_interaction()  # 最後の操作時間を更新
                 
                         # ユーザーのリクエストを入力
-                        requests = st.text_area("可視化したいことを記載してください", height=5, placeholder="例：〇〇カラムごとの平均年齢を棒グラフで可視化してください。")
+                        requests_3 = st.text_area("可視化したいことを記載してください", height=5, placeholder="例：〇〇カラムごとの平均年齢を棒グラフで可視化してください。")
 
                         # ボタンが押されたとき
                         if st.button("可視化", key="submit"):
-                            if requests:
-                                st.write(f"可視化内容：\n{requests}")
+                            if requests_3:
+                                st.write(f"可視化内容：\n{requests_3}")
                                 # 生成されたコードの呼び出しと実行
-                                generated_code = generate_code(requests, column_info)
-                                execute_generated_code(st.session_state.df, generated_code)
+                                generated_code_3 = generate_code(requests_3, column_info)
+                                execute_generated_code(st.session_state.df, generated_code_3)
                                 update_last_interaction()  # 最後の操作時間を更新
 
 if __name__ == "__main__":

@@ -33,10 +33,10 @@ def main():
         column_info = st.session_state.column_info
 
         # ユーザーのリクエストを入力
-        requests = st.text_area("可視化したいことを記載してください", height=5, placeholder="例：〇〇カラムごとの平均年齢を棒グラフで可視化してください。")
+        requests = st.text_area("可視化したいことを記載してください", height=5, placeholder="例：〇〇カラムごとの平均年齢を棒グラフで可視化してください。", key="request_1")
 
         # ボタンが押されたとき
-        if st.button("可視化", key="submit"):
+        if st.button("可視化", key="submit_1"):
             if requests:
                 st.write(f"可視化内容：\n{requests}")
                 # 生成されたコードの呼び出しと実行
@@ -45,10 +45,10 @@ def main():
                 update_last_interaction()  # 最後の操作時間を更新
 
                 # ユーザーのリクエストを入力
-                requests_2 = st.text_area("可視化したいことを記載してください", height=5, placeholder="例：〇〇カラムごとの平均年齢を棒グラフで可視化してください。")
+                requests_2 = st.text_area("可視化したいことを記載してください", height=5, placeholder="例：〇〇カラムごとの平均年齢を棒グラフで可視化してください。", key="request_2")
 
                 # ボタンが押されたとき
-                if st.button("可視化", key="submit"):
+                if st.button("可視化", key="submit_2"):
                     if requests_2:
                         st.write(f"可視化内容：\n{requests_2}")
                         # 生成されたコードの呼び出しと実行
@@ -57,10 +57,10 @@ def main():
                         update_last_interaction()  # 最後の操作時間を更新
                 
                         # ユーザーのリクエストを入力
-                        requests_3 = st.text_area("可視化したいことを記載してください", height=5, placeholder="例：〇〇カラムごとの平均年齢を棒グラフで可視化してください。")
+                        requests_3 = st.text_area("可視化したいことを記載してください", height=5, placeholder="例：〇〇カラムごとの平均年齢を棒グラフで可視化してください。", key="request_3")
 
                         # ボタンが押されたとき
-                        if st.button("可視化", key="submit"):
+                        if st.button("可視化", key="submit_3"):
                             if requests_3:
                                 st.write(f"可視化内容：\n{requests_3}")
                                 # 生成されたコードの呼び出しと実行

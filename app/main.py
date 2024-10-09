@@ -44,6 +44,30 @@ def main():
                 execute_generated_code(st.session_state.df, generated_code)
                 update_last_interaction()  # 最後の操作時間を更新
 
+                # ユーザーのリクエストを入力
+                requests = st.text_area("可視化したいことを記載してください", height=5, placeholder="例：〇〇カラムごとの平均年齢を棒グラフで可視化してください。")
+
+                # ボタンが押されたとき
+                if st.button("可視化", key="submit"):
+                    if requests:
+                        st.write(f"可視化内容：\n{requests}")
+                        # 生成されたコードの呼び出しと実行
+                        generated_code = generate_code(requests, column_info)
+                        execute_generated_code(st.session_state.df, generated_code)
+                        update_last_interaction()  # 最後の操作時間を更新
+                
+                        # ユーザーのリクエストを入力
+                        requests = st.text_area("可視化したいことを記載してください", height=5, placeholder="例：〇〇カラムごとの平均年齢を棒グラフで可視化してください。")
+
+                        # ボタンが押されたとき
+                        if st.button("可視化", key="submit"):
+                            if requests:
+                                st.write(f"可視化内容：\n{requests}")
+                                # 生成されたコードの呼び出しと実行
+                                generated_code = generate_code(requests, column_info)
+                                execute_generated_code(st.session_state.df, generated_code)
+                                update_last_interaction()  # 最後の操作時間を更新
+
 if __name__ == "__main__":
     # APIキー等の設定
     load_config()

@@ -2,9 +2,11 @@ pandas
 numpy
 matplotlib
 seaborn
-langchain==0.2.12
-langchain_core==0.2.29
-langchain-openai==0.1.20
-openai==1.40.1
+japanize_matplotlib
 python-dotenv
 streamlit==1.37.1
+
+openai>=1.55.3
+langchain>=0.3.0
+langchain-openai>=0.1.24
+langchain-core>=0.2.30
